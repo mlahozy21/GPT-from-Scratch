@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minigpt"
+version = "0.1.0"
+description = "A small modern GPT (RoPE, RMSNorm, SwiGLU, KV-cache) implemented and trained from scratch in PyTorch, with a scaling study."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Marcos Lahoz" }]
+dependencies = ["torch>=2.2", "numpy>=1.24", "datasets>=2.18",
+                "tiktoken>=0.7", "transformers>=4.40", "matplotlib>=3.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

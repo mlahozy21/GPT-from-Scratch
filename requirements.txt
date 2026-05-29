@@ -1,0 +1,6 @@
+torch>=2.2
+numpy>=1.24
+datasets>=2.18
+tiktoken>=0.7
+transformers>=4.40
+matplotlib>=3.7
