@@ -72,8 +72,7 @@ scale them to your compute budget.
 ## References
 
 Vaswani et al. (2017) *Attention Is All You Need* · Su et al. (2021) *RoFormer/RoPE* ·
-Zhang & Sennrich (2019) *RMSNorm* · Shazeer (2020) *GLU Variants* ·
-Kaplan et al. (2020) *Scaling Laws*. Data: TinyStories (Eldan & Li, 2023).
+Zhang & Sennrich (2019) *RMSNorm* · Shazeer (2020) *GLU Variants* · Data: TinyStories (Eldan & Li, 2023).
 
 ## License
 
