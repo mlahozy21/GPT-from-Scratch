@@ -66,37 +66,16 @@ initialisation, and generates coherent short stories, e.g. for the prompt
 \emph{``Once upon a time''} it continues with a complete, on-topic narrative about
 two friends playing in a park.
 
-\section{Scaling study}
-We train four sizes (tiny/small/medium/large, from $\sim$0.5M to $\sim$85M
-non-embedding parameters) for a fixed iteration budget and record the final
-validation loss. We expect the familiar monotone, roughly power-law decrease of
-loss with model size.
-
-\optfig{scaling.png}{0.6}{Validation loss vs.\ (non-embedding) parameter count.}
-
-\begin{table}[h]\centering
-\begin{tabular}{lrrr}\toprule
-size & params (M) & val loss & val ppl \\ \midrule
-tiny & \dots & \dots & \dots \\
-small & \dots & \dots & \dots \\
-medium & \dots & \dots & \dots \\
-large & \dots & \dots & \dots \\
-\bottomrule\end{tabular}
-\caption{Scaling summary (produced as \texttt{scaling.csv}).}
-\end{table}
-
 \section{Discussion}
 The project is a clean, dependency-light reference implementation of a modern GPT
 that is both \emph{correct} (validated end-to-end) and \emph{scalable}. Natural
 extensions: grouped-query attention, FlashAttention / \texttt{scaled\_dot\_product\_attention},
-$\mu$P or careful LR scaling, longer context, and fitting an explicit scaling law
-$L(N)=L_\infty + (N_0/N)^{\alpha}$ to the measured points.
+$\mu$P or careful LR scaling, longer context,.
 
 \begin{thebibliography}{9}
 \bibitem{vaswani} Vaswani et al. (2017). \emph{Attention Is All You Need}. NeurIPS.
 \bibitem{rope} Su et al. (2021). \emph{RoFormer: Enhanced Transformer with Rotary Position Embedding}.
 \bibitem{rms} Zhang \& Sennrich (2019). \emph{Root Mean Square Layer Normalization}. NeurIPS.
 \bibitem{swiglu} Shazeer (2020). \emph{GLU Variants Improve Transformer}.
-\bibitem{kaplan} Kaplan et al. (2020). \emph{Scaling Laws for Neural Language Models}.
 \end{thebibliography}
 \end{document}

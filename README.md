@@ -51,7 +51,6 @@ python scripts/smoke_test.py                       # validate the implementation
 python scripts/prepare_data.py --max-docs 200000   # BPE-tokenise TinyStories -> data/*.bin
 python scripts/train.py --n-layer 8 --n-head 8 --n-embd 512 --max-iters 5000
 python scripts/generate.py --prompt "Once upon a time"
-python scripts/scaling_study.py --max-iters 3000   # loss vs model size -> figures/scaling.png
 ```
 
 Model size, context length, optimisation and data are all configurable via flags;
@@ -65,7 +64,6 @@ scale them to your compute budget.
 │   ├── model.py      # the GPT: RMSNorm, RoPE, attention(+KV cache), SwiGLU, generate
 │   ├── data.py       # BPE tokenisation -> uint16 stream + block sampler
 │   └── train.py      # training loop (AMP, cosine LR, grad accum, eval/perplexity)
-├── scripts/          # smoke_test, prepare_data, train, generate, scaling_study
 ├── notebooks/train_gpt.ipynb
 ├── paper/report.tex (+ report.pdf)
 └── figures/
