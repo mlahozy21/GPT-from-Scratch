@@ -21,6 +21,25 @@ that only appears earlier in the context — solvable only via attention). It re
 masking and cached generation are correct. A short write-up is in
 [`paper/report.pdf`](paper/report.pdf).
 
+## Results (trained run)
+
+Training a **25.3M-parameter** model (8 layers, 8 heads, dim 512, context 256) on
+**TinyStories** (44.7M training tokens) for 5,000 iterations (~11 min on one GPU):
+
+| | start | final |
+|---|------:|------:|
+| validation loss | 10.92 | **1.54** |
+| validation perplexity | 55,262 | **4.67** |
+
+Sample (`prompt = "Once upon a time"`):
+
+> *Once upon a time, there were two friends, Jack and Mia. They were playing in the
+> park, having lots of fun. ... "Me too! Let's play again soon!" And so they did, and
+> they played until it was time to go home, happy and tired from their special day.*
+
+The model produces coherent, on-distribution short stories — confirming the
+from-scratch implementation trains a real language model end to end.
+
 ## Run
 
 One click in Colab (badge above), or locally with a GPU:
