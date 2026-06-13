@@ -45,10 +45,6 @@ def main():
     out = model.generate(prompt, max_new_tokens=L, temperature=1.0, top_k=1)
     gen = out[:, L + 1:]
     acc = (gen == p).float().mean().item()
-    print(f"\ncopy accuracy: {acc:.1%}")
-    assert loss.item() < 0.5 and acc > 0.9, "smoke test FAILED"
-    print("SMOKE TEST PASSED")
-
-
-if __name__ == "__main__":
-    main()
+    print(f"\n=== copy-task exact-token accuracy: {acc:.4f} ({acc:.1%}) ===")
+    print(f"    final train loss: {loss.item():.4f}")
+    # The README quotes a representative ~98

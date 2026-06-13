@@ -64,7 +64,7 @@ def train(model_cfg: GPTConfig, cfg: TrainConfig):
     model = GPT(model_cfg).to(device)
     print(f"Model: {model.num_params()/1e6:.1f}M non-embedding params")
     opt = model.configure_optimizers(cfg.weight_decay, cfg.lr)
-    scaler = torch.cuda.amp.GradScaler(enabled=(device == "cuda" and not use_bf16))
+    scaler = torch.amp.GradScaler("cuda", enabled=(device == "cuda" and not use_bf16))
 
     t0 = time.time()
     for it in range(cfg.max_iters + 1):
@@ -78,8 +78,8 @@ def train(model_cfg: GPTConfig, cfg: TrainConfig):
 
         for micro in range(cfg.grad_accum):
             x, y = train_stream.batch(cfg.batch_size, device)
-            ctx = (torch.autocast(device_type="cuda", dtype=amp_dtype)
-                   if device == "cuda" else torch.autocast(device_type="cpu", dtype=torch.bfloat16))
+            ctx = (torch.amp.autocast(device_type="cuda", dtype=amp_dtype)
+                   if device == "cuda" else torch.amp.autocast(device_type="cpu", dtype=torch.bfloat16))
             with ctx:
                 _, loss = model(x, y)
                 loss = loss / cfg.grad_accum
@@ -96,4 +96,4 @@ def train(model_cfg: GPTConfig, cfg: TrainConfig):
                f"{cfg.out_dir}/ckpt.pt")
     final_loss, final_ppl = evaluate(model, val_stream, cfg, device)
     print(f"Done. Final val loss {final_loss:.4f} | ppl {final_ppl:.2f}")
-    return model, final_loss, final_ppl
+    return model, final_loss,

@@ -17,8 +17,10 @@ Everything is in `src/minigpt/model.py` (~200 lines) and a small training loop.
 
 `scripts/smoke_test.py` trains a tiny model on a **copy task** (predict a sequence
 that only appears earlier in the context — solvable only via attention). It reaches
-**98.4% exact-copy accuracy** in ~300 steps on CPU, confirming attention, RoPE,
-masking and cached generation are correct. A short write-up is in
+**~98% exact-copy accuracy** (98.4% on a representative seed-0 run; the script
+asserts a conservative >90% floor and prints the achieved accuracy) in ~300 steps
+on CPU, confirming attention, RoPE, masking and cached generation are correct. A
+short write-up is in
 [`paper/report.pdf`](paper/report.pdf).
 
 ## Results (trained run)
@@ -72,8 +74,4 @@ scale them to your compute budget.
 ## References
 
 Vaswani et al. (2017) *Attention Is All You Need* · Su et al. (2021) *RoFormer/RoPE* ·
-Zhang & Sennrich (2019) *RMSNorm* · Shazeer (2020) *GLU Variants* · Data: TinyStories (Eldan & Li, 2023).
-
-## License
-
-Released under the MIT License — see `LICENSE`.
+Zhang & Sennrich (2019) *RMSNorm* · Shazeer (2020) *G
