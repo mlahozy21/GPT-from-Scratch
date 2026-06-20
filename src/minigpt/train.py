@@ -96,4 +96,4 @@ def train(model_cfg: GPTConfig, cfg: TrainConfig):
                f"{cfg.out_dir}/ckpt.pt")
     final_loss, final_ppl = evaluate(model, val_stream, cfg, device)
     print(f"Done. Final val loss {final_loss:.4f} | ppl {final_ppl:.2f}")
-    return model, final_loss,
+    return model, final_loss, final_ppl

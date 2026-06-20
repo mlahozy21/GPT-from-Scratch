@@ -47,4 +47,11 @@ def main():
     acc = (gen == p).float().mean().item()
     print(f"\n=== copy-task exact-token accuracy: {acc:.4f} ({acc:.1%}) ===")
     print(f"    final train loss: {loss.item():.4f}")
-    # The README quotes a representative ~98
+    # The README quotes a representative ~98.4% figure from a particular run;
+    # exact accuracy varies run-to-run, so we only assert a conservative floor.
+    assert loss.item() < 0.5 and acc > 0.9, "smoke test FAILED (acc floor 0.9)"
+    print("SMOKE TEST PASSED (acc >= 0.90 floor)")
+
+
+if __name__ == "__main__":
+    main()
